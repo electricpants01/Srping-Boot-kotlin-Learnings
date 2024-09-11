@@ -35,11 +35,6 @@ class JwtRequestFilter(
             jwt = authorizationHeader.substring(7)
             username = jwtUtil.extractUsername(jwt)
 
-            // Check if the token is revoked
-            if (refreshTokenService.isTokenRevoked(jwt)) {
-                response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Token is revoked")
-                return
-            }
         }
 
         if (username != null && SecurityContextHolder.getContext().authentication == null) {
