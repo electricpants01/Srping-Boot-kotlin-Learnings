@@ -24,7 +24,7 @@ class JwtUtil {
             .setClaims(claims)
             .setSubject(userDetails.username) // Here we use username
             .setIssuedAt(Date())
-            .setExpiration(Date(System.currentTimeMillis() + 1000 * 60 * 15)) // 15 minutes expiration
+            .setExpiration(Date(System.currentTimeMillis() + 1000 * 60 * 1)) // 1 minutes expiration
             .signWith(secretKey)
             .compact()
     }
@@ -37,7 +37,7 @@ class JwtUtil {
 
     fun generateRefreshToken(userDetails: UserDetails): String {
         val now = LocalDateTime.now()
-        val expiration = now.plusDays(7) // 7 days
+        val expiration = now.plusDays(1) // 1 days
 
         return Jwts.builder()
             .setSubject(userDetails.username)

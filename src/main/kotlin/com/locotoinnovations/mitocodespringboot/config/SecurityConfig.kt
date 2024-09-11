@@ -21,7 +21,12 @@ class SecurityConfig(
 ) {
 
     companion object {
-        val WHITE_LIST_AUTH = listOf("/api/v1/auth/authenticate", "/api/v1/auth/register", "/api/v1/auth/register-admin")
+        val WHITE_LIST_AUTH = listOf(
+            "/api/v1/auth/authenticate",
+            "/api/v1/auth/register",
+            "/api/v1/auth/register-admin",
+            "/api/v1/auth/refresh"
+        )
     }
 
     @Bean
@@ -38,6 +43,7 @@ class SecurityConfig(
             .sessionManagement {
                 it.sessionCreationPolicy(SessionCreationPolicy.STATELESS) // No sessions; JWT is stateless
             }
+            // Ensure that JwtRequestFilter only applies to authenticated requests
             .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter::class.java)
 
         return http.build()

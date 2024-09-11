@@ -7,9 +7,7 @@ import org.springframework.stereotype.Service
 import java.time.LocalDateTime
 
 @Service
-class RefreshTokenService(
-    private val refreshTokenRepository: RefreshTokenRepository
-) {
+class RefreshTokenService(private val refreshTokenRepository: RefreshTokenRepository) {
 
     fun saveRefreshToken(token: String, username: String, expiryDate: LocalDateTime) {
         val refreshToken = RefreshToken(token = token, username = username, expiryDate = expiryDate)
@@ -32,4 +30,20 @@ class RefreshTokenService(
         val refreshToken = refreshTokenRepository.findByToken(token) ?: return true
         return refreshToken.revoked
     }
+
+    fun validateRefreshToken(refreshToken: String): RefreshToken? {
+        val retrievedToken = refreshTokenRepository.findByToken(refreshToken) ?: return null
+
+        // Check for expiration and revocation
+        if (retrievedToken.isExpired() || retrievedToken.revoked) {
+            return null
+        }
+
+        return retrievedToken
+    }
+}
+
+// Helper function on RefreshToken
+private fun RefreshToken.isExpired(): Boolean {
+    return LocalDateTime.now().isAfter(this.expiryDate)
 }

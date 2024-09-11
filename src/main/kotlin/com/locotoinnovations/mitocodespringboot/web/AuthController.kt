@@ -4,6 +4,7 @@ import com.locotoinnovations.mitocodespringboot.config.JwtUtil
 import com.locotoinnovations.mitocodespringboot.domain.Role
 import com.locotoinnovations.mitocodespringboot.service.CustomUserDetailsService
 import com.locotoinnovations.mitocodespringboot.service.RefreshTokenService
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
@@ -39,6 +40,28 @@ class AuthController(
         refreshTokenService.saveRefreshToken(refreshToken, authenticationRequest.email, jwtUtil.getExpiryDate(refreshToken))
 
         return ResponseEntity.ok(mapOf("accessToken" to accessToken, "refreshToken" to refreshToken))
+    }
+
+    @PostMapping("/refresh")
+    fun refreshAccessToken(
+        @RequestBody refreshTokenRequest: RefreshTokenRequest
+    ): ResponseEntity<Map<String, String>> {
+        val refreshToken = refreshTokenRequest.refreshToken
+        if (refreshToken.isBlank()) {
+            return ResponseEntity.badRequest().body(mapOf("error" to "Refresh token is missing"))
+        }
+
+        // Validate refresh token (check expiry, blacklist, etc.)
+        val validatedRefreshToken = refreshTokenService.validateRefreshToken(refreshToken)
+        if (validatedRefreshToken == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(mapOf("error" to "Invalid refresh token"))
+        }
+
+        // Generate new access token using the username from the validated refresh token
+        val userDetails = userDetailsService.loadUserByUsername(validatedRefreshToken.username)
+        val newAccessToken = jwtUtil.generateToken(userDetails)
+
+        return ResponseEntity.ok(mapOf("accessToken" to newAccessToken))
     }
 
     @PostMapping("/register")
@@ -88,5 +111,9 @@ data class AdminRegistrationRequest(
 )
 
 data class LogoutRequest(
+    val refreshToken: String
+)
+
+data class RefreshTokenRequest(
     val refreshToken: String
 )
