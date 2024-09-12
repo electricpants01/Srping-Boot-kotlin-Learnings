@@ -1,7 +1,7 @@
-package com.locotoinnovations.mitocodespringboot.service
+package com.locotoinnovations.service
 
-import com.locotoinnovations.mitocodespringboot.domain.RefreshToken
-import com.locotoinnovations.mitocodespringboot.repository.RefreshTokenRepository
+import com.locotoinnovations.domain.RefreshToken
+import com.locotoinnovations.repository.RefreshTokenRepository
 import jakarta.transaction.Transactional
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime

@@ -1,4 +1,4 @@
-package com.locotoinnovations.mitocodespringboot.domain
+package com.locotoinnovations.domain
 
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue

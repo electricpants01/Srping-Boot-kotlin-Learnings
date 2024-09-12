@@ -1,9 +1,9 @@
-package com.locotoinnovations.mitocodespringboot.web
+package com.locotoinnovations.web
 
-import com.locotoinnovations.mitocodespringboot.config.JwtUtil
-import com.locotoinnovations.mitocodespringboot.domain.Role
-import com.locotoinnovations.mitocodespringboot.service.CustomUserDetailsService
-import com.locotoinnovations.mitocodespringboot.service.RefreshTokenService
+import com.locotoinnovations.config.JwtUtil
+import com.locotoinnovations.domain.Role
+import com.locotoinnovations.service.CustomUserDetailsService
+import com.locotoinnovations.service.RefreshTokenService
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.security.authentication.AuthenticationManager

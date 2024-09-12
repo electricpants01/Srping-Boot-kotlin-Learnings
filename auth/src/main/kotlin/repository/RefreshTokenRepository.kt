@@ -1,6 +1,6 @@
-package com.locotoinnovations.mitocodespringboot.repository
+package com.locotoinnovations.repository
 
-import com.locotoinnovations.mitocodespringboot.domain.RefreshToken
+import com.locotoinnovations.domain.RefreshToken
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 

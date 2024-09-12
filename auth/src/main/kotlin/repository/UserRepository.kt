@@ -1,6 +1,6 @@
-package com.locotoinnovations.mitocodespringboot.repository
+package com.locotoinnovations.repository
 
-import com.locotoinnovations.mitocodespringboot.domain.User
+import com.locotoinnovations.domain.User
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface UserRepository : JpaRepository<User, Long> {

@@ -1,6 +1,6 @@
-package com.locotoinnovations.mitocodespringboot.config
+package com.locotoinnovations.config
 
-import com.locotoinnovations.mitocodespringboot.service.CustomUserDetailsService
+import com.locotoinnovations.service.CustomUserDetailsService
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.authentication.AuthenticationManager
@@ -76,21 +76,3 @@ class ApplicationConfig {
         return provider
     }
 }
-
-//@Configuration
-//class SecurityConfig {
-//
-//    @Bean
-//    fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
-//        // Disable CSRF protection (optional based on your requirements)
-//        http.csrf { it.disable() }
-//            .authorizeHttpRequests {
-//                // Allow public access to all endpoints
-//                it.anyRequest().permitAll()
-//            }
-//            // Disable form login to avoid the default login page redirect
-//            .formLogin { it.disable() }
-//
-//        return http.build()
-//    }
-//}

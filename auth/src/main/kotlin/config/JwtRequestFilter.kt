@@ -1,6 +1,6 @@
-package com.locotoinnovations.mitocodespringboot.config
+package com.locotoinnovations.config
 
-import com.locotoinnovations.mitocodespringboot.service.CustomUserDetailsService
+import com.locotoinnovations.service.CustomUserDetailsService
 import jakarta.servlet.FilterChain
 import jakarta.servlet.ServletException
 import jakarta.servlet.http.HttpServletRequest
