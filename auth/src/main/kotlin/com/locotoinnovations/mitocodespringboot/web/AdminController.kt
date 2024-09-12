@@ -1,4 +1,4 @@
-package com.locotoinnovations.web
+package com.locotoinnovations.mitocodespringboot.web
 
 import org.springframework.http.ResponseEntity
 import org.springframework.security.access.prepost.PreAuthorize

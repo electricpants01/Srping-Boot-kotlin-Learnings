@@ -1,4 +1,4 @@
-package com.locotoinnovations.config
+package com.locotoinnovations.mitocodespringboot.config
 
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm

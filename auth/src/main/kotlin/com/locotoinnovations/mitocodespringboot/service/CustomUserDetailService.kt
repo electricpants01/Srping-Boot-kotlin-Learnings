@@ -1,9 +1,9 @@
-package com.locotoinnovations.service
+package com.locotoinnovations.mitocodespringboot.service
 
-import com.locotoinnovations.domain.Role
-import com.locotoinnovations.domain.User
+import com.locotoinnovations.mitocodespringboot.domain.Role
+import com.locotoinnovations.mitocodespringboot.domain.User
 import com.locotoinnovations.mitocodespringboot.repository.UserRepository
-import com.locotoinnovations.web.RegistrationRequest
+import com.locotoinnovations.mitocodespringboot.web.RegistrationRequest
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.core.userdetails.UsernameNotFoundException

@@ -1,4 +1,4 @@
-package com.locotoinnovations.domain
+package com.locotoinnovations.mitocodespringboot.domain
 
 import jakarta.persistence.*
 import org.springframework.security.core.GrantedAuthority

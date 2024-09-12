@@ -1,6 +1,6 @@
-package com.locotoinnovations.config
+package com.locotoinnovations.mitocodespringboot.config
 
-import com.locotoinnovations.service.CustomUserDetailsService
+import com.locotoinnovations.mitocodespringboot.service.CustomUserDetailsService
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.authentication.AuthenticationManager
