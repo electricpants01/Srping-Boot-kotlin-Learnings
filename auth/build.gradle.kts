@@ -2,6 +2,7 @@ plugins {
     id("org.springframework.boot")
     kotlin("jvm") version "1.9.25"
     kotlin("plugin.spring")
+    kotlin("plugin.jpa") version "1.9.25"
 }
 
 dependencies {
@@ -22,4 +23,6 @@ dependencies {
     implementation("io.jsonwebtoken:jjwt-api:0.11.5")
     runtimeOnly("io.jsonwebtoken:jjwt-impl:0.11.5")
     runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.11.5") // for JSON parsing
+    // postgresql
+    implementation("org.postgresql:postgresql")
 }
